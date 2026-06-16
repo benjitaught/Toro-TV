@@ -5,19 +5,21 @@ Static rebuild of [toro-tv.com](https://toro-tv.com/), recreated off of GoDaddy 
 ## Structure
 
 - `index.html` — homepage (hero, giveaway, about, demo, referral, contact, subscribe, socials)
-- `demo.html` — demo page
-- `sign-up.html` — sign-up page (placeholder form — wire up your real checkout/membership provider here)
+- `demo.html` — demo page (Vimeo walkthrough + device install instructions)
+- `sign-up.html` — pricing plans, wired to the real Square Checkout links pulled from the live site
+- `privacy-policy.html` / `terms-and-conditions.html` — placeholder legal pages (the live site's are placeholders too)
 - `styles.css` — all styling
 - `script.js` — giveaway countdown timer
 - `assets/` — logo, hero art, and other images pulled from the live site
 
 ## Content notes
 
-All copy, links, and images were pulled directly from the live GoDaddy site on 2026-06-15, so this should match closely. A few things still need real wiring once you're off GoDaddy:
+All copy, links, images, and payment links were pulled directly from the live GoDaddy site on 2026-06-15, so this should match closely.
 
-- The **Sign-Up** form and **Subscribe** form are placeholders (they just show an alert). Hook these up to whatever you use to take orders/payments (Stripe, a membership platform, Mailchimp, etc.).
-- The **Contact** form is also a placeholder — wire it to an email service (e.g. Formspree, EmailJS) or a backend.
+- The **pricing buttons** on `sign-up.html` link to the actual Square Checkout pages already in use (Toro Solo $24.99/mo & $179/yr, Toro Family $69.99/mo & $299/yr). No changes needed unless you want to switch payment processors.
+- The **Subscribe** form (email list signup) and **Contact** form are placeholders (they just show an alert) since those were backed by GoDaddy's own widgets. Wire them up to a mailing list tool (Mailchimp, etc.) and a form backend (Formspree, EmailJS) respectively.
 - The countdown timer targets **7/31/2026**, matching the live giveaway end date — update if the promo changes.
+- All internal links are relative (`index.html`, `demo.html`, etc.) rather than absolute (`/`, `/demo.html`) so navigation works correctly whether the site is hosted at a domain root or under a GitHub Pages subpath like `/Toro-TV/`.
 
 ## Hosting on GitHub Pages
 
