@@ -94,8 +94,7 @@ h1, h2, h3 {
   position: relative;
 }
 .brand { display: flex; align-items: center; gap: 0.6rem; }
-.brand-logo { height: 38px; width: auto; }
-.brand-name { font-family: var(--font-heading); font-weight: 800; font-size: 1.3rem; color: var(--red-light); }
+.brand-logo { height: 46px; width: auto; }
 .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; margin: 0; padding: 0; }
 .nav-links a {
   font-weight: 600;
@@ -243,7 +242,7 @@ h1, h2, h3 {
 .giveaway-card .btn { margin-top: 0.5rem; }
 
 /* ---------- Countdown ---------- */
-.countdown { padding-top: 1rem; padding-bottom: 1.5rem; background: transparent; }
+.countdown { padding-top: 2rem; padding-bottom: 1.5rem; background: transparent; }
 .countdown-grid { display: flex; justify-content: center; gap: 1.25rem; flex-wrap: wrap; }
 .countdown-item {
   background: var(--card);
@@ -372,21 +371,30 @@ h1, h2, h3 {
   align-items: start;
 }
 .testimonial-card {
-  background: rgba(255,255,255,0.045);
-  border: 1px solid rgba(255,255,255,0.14);
-  border-radius: 22px;
-  padding: 1.75rem;
+  position: relative;
+  background: linear-gradient(160deg, rgba(255,255,255,0.09), rgba(255,255,255,0.025));
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 26px;
+  padding: 1.85rem;
   display: flex;
   flex-direction: column;
   gap: 0.85rem;
-  backdrop-filter: blur(18px) saturate(160%);
-  -webkit-backdrop-filter: blur(18px) saturate(160%);
-  box-shadow: 0 18px 40px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.09);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  box-shadow: 0 24px 50px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.16), inset 0 0 0 1px rgba(255,255,255,0.03);
   animation: floatCard 6s ease-in-out infinite;
-  transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+  transition: transform .35s ease, box-shadow .35s ease, border-color .35s ease;
+  overflow: hidden;
+}
+.testimonial-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.55), transparent);
 }
 .testimonial-card:hover {
-  transform: translateY(-6px);
+  transform: translateY(-8px) scale(1.015);
   border-color: rgba(255,255,255,0.28);
   box-shadow: 0 24px 50px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.12);
 }
@@ -698,7 +706,7 @@ h1, h2, h3 {
     white-space: nowrap;
   }
 
-  .countdown { padding-top: 0.5rem; }
+  .countdown { padding-top: 1.25rem; }
   .countdown-grid { gap: 0.5rem; flex-wrap: nowrap; }
   .countdown-item {
     padding: 0.5rem 0.3rem;
