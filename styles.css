@@ -563,32 +563,6 @@ h1, h2, h3 {
 .social-icon { width: 30px; height: 30px; color: var(--text-dim); transition: color .15s ease, transform .15s ease; }
 .social-icon:hover { color: var(--red-light); transform: translateY(-2px); }
 
-/* ---------- Cookie banner ---------- */
-.cookie-banner {
-  position: fixed;
-  bottom: 1rem;
-  left: 1rem;
-  right: 1rem;
-  max-width: 480px;
-  margin: 0 auto;
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-md);
-  padding: 1.1rem 1.4rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  flex-wrap: wrap;
-  z-index: 200;
-  box-shadow: var(--shadow);
-  animation: slideUp .4s ease;
-}
-@keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
-.cookie-banner p { margin: 0; font-size: 0.85rem; color: var(--text-dim); }
-.cookie-actions { display: flex; gap: 0.5rem; }
-.cookie-actions .btn { padding: 0.55rem 1.2rem; font-size: 0.85rem; }
-
 /* ---------- Sticky mobile CTA ---------- */
 .sticky-cta {
   display: none;
