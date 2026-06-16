@@ -159,11 +159,13 @@
     <span class="eyebrow">Drop us a line</span>
     <h2>Contact Us</h2>
     <div class="contact-layout">
-      <form class="contact-form" onsubmit="event.preventDefault(); alert('Thanks! We will get back to you within 48 hours.');">
+      <form class="contact-form js-form" action="https://formspree.io/f/mvznljvb" method="POST" data-success="Thanks! We'll get back to you within 48 hours.">
+        <input type="hidden" name="_subject" value="New contact form submission — Toro TV" />
         <label>Name<input type="text" name="name" /></label>
         <label>Email*<input type="email" name="email" required /></label>
         <label>Attach Files<input type="file" name="attachment" /></label>
         <button type="submit" class="btn btn-primary btn-block">Send</button>
+        <p class="form-status" role="status" aria-live="polite"></p>
         <p class="fine-print">This site is protected by reCAPTCHA and the Google
           <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Privacy Policy</a> and
           <a href="https://policies.google.com/terms" target="_blank" rel="noopener">Terms of Service</a> apply.
@@ -192,9 +194,11 @@
       <div class="connect-card">
         <h3>Subscribe for updates</h3>
         <p>For the latest updates and exclusive offers, straight to your inbox.</p>
-        <form class="subscribe-form" onsubmit="event.preventDefault(); alert('Thanks for subscribing!');">
+        <form class="subscribe-form js-form" action="https://formspree.io/f/mvznljvb" method="POST" data-success="Thanks for subscribing!">
+          <input type="hidden" name="_subject" value="New newsletter signup — Toro TV" />
           <input type="email" name="email" placeholder="Email" required />
           <button type="submit" class="btn btn-primary">Sign up</button>
+          <p class="form-status" role="status" aria-live="polite"></p>
         </form>
       </div>
     </div>

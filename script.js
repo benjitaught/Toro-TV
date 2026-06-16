@@ -112,3 +112,60 @@
 
   setPeriod('monthly');
 })();
+
+// Formspree-backed forms (contact + subscribe) — AJAX submit, no page leave
+(function () {
+  var forms = document.querySelectorAll('.js-form');
+  if (!forms.length) return;
+
+  forms.forEach(function (form) {
+    var status = form.querySelector('.form-status');
+    var submitBtn = form.querySelector('button[type="submit"]');
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      var originalLabel = submitBtn ? submitBtn.textContent : '';
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Sending…';
+      }
+      if (status) {
+        status.textContent = '';
+        status.classList.remove('form-status-error', 'form-status-success');
+      }
+
+      fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { Accept: 'application/json' }
+      })
+        .then(function (response) {
+          if (response.ok) {
+            if (status) {
+              status.textContent = form.dataset.success || 'Thanks — submitted!';
+              status.classList.add('form-status-success');
+            }
+            form.reset();
+          } else {
+            if (status) {
+              status.textContent = 'Something went wrong. Please try again or email us directly.';
+              status.classList.add('form-status-error');
+            }
+          }
+        })
+        .catch(function () {
+          if (status) {
+            status.textContent = 'Something went wrong. Please try again or email us directly.';
+            status.classList.add('form-status-error');
+          }
+        })
+        .finally(function () {
+          if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.textContent = originalLabel;
+          }
+        });
+    });
+  });
+})();
