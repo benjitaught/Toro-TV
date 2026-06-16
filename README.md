@@ -4,12 +4,12 @@ Static rebuild of [toro-tv.com](https://toro-tv.com/), recreated off of GoDaddy 
 
 ## Structure
 
-- `site/index.html` — homepage (hero, giveaway, about, demo, referral, contact, subscribe, socials)
-- `site/demo.html` — demo page
-- `site/sign-up.html` — sign-up page (placeholder form — wire up your real checkout/membership provider here)
-- `site/styles.css` — all styling
-- `site/script.js` — giveaway countdown timer
-- `site/assets/` — logo, hero art, and other images pulled from the live site
+- `index.html` — homepage (hero, giveaway, about, demo, referral, contact, subscribe, socials)
+- `demo.html` — demo page
+- `sign-up.html` — sign-up page (placeholder form — wire up your real checkout/membership provider here)
+- `styles.css` — all styling
+- `script.js` — giveaway countdown timer
+- `assets/` — logo, hero art, and other images pulled from the live site
 
 ## Content notes
 
@@ -21,14 +21,14 @@ All copy, links, and images were pulled directly from the live GoDaddy site on 2
 
 ## Hosting on GitHub Pages
 
-1. Push this repo to GitHub (already done if you're reading this from the repo).
-2. In **Settings → Pages**, set the source to the `main` branch, `/site` folder (or move `site/*` to the repo root if you'd rather serve from `/`).
-3. Point your domain's DNS (once you move it off GoDaddy or just update the DNS records) at GitHub Pages.
+This repo is already configured to deploy via GitHub Pages from the `main` branch root. Once enabled (Settings → Pages → source: `main` / `/`), it will be live at `https://<username>.github.io/Toro-TV/`.
+
+To use your real `toro-tv.com` domain instead of the github.io URL, add a `CNAME` file with `toro-tv.com` in it and update your domain's DNS (once you move it off GoDaddy) to point at GitHub Pages.
 
 ## Local preview
 
-Just open `site/index.html` in a browser, or run a tiny local server:
+Just open `index.html` in a browser, or run a tiny local server:
 
 ```bash
-cd site && python3 -m http.server 8000
+python3 -m http.server 8000
 ```
