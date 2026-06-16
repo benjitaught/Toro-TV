@@ -34,3 +34,81 @@
   tick();
   setInterval(tick, 1000);
 })();
+
+// Mobile nav toggle
+(function () {
+  var toggle = document.querySelector('.nav-toggle');
+  var links = document.querySelector('.nav-links');
+  if (!toggle || !links) return;
+
+  toggle.addEventListener('click', function () {
+    var isOpen = links.classList.toggle('is-open');
+    toggle.classList.toggle('is-open', isOpen);
+    toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  });
+
+  links.querySelectorAll('a').forEach(function (a) {
+    a.addEventListener('click', function () {
+      links.classList.remove('is-open');
+      toggle.classList.remove('is-open');
+      toggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+})();
+
+// Scroll-reveal animations
+(function () {
+  var targets = document.querySelectorAll('.reveal');
+  if (!targets.length) return;
+
+  if (!('IntersectionObserver' in window)) {
+    targets.forEach(function (el) { el.classList.add('is-visible'); });
+    return;
+  }
+
+  var observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  targets.forEach(function (el) { observer.observe(el); });
+})();
+
+// Pricing monthly/yearly toggle (sign-up page)
+(function () {
+  var toggleWrap = document.querySelector('.plan-toggle');
+  if (!toggleWrap) return;
+
+  var buttons = toggleWrap.querySelectorAll('button');
+  var cards = document.querySelectorAll('.pricing-card');
+
+  function setPeriod(period) {
+    buttons.forEach(function (b) {
+      b.classList.toggle('is-active', b.dataset.period === period);
+    });
+    cards.forEach(function (card) {
+      var price = card.dataset['price' + (period === 'yearly' ? 'Yearly' : 'Monthly')];
+      var save = card.dataset['save' + (period === 'yearly' ? 'Yearly' : 'Monthly')] || '';
+      var link = card.dataset['link' + (period === 'yearly' ? 'Yearly' : 'Monthly')];
+      var label = card.dataset['label' + (period === 'yearly' ? 'Yearly' : 'Monthly')];
+
+      card.querySelector('.pricing-price').textContent = price;
+      card.querySelector('.pricing-period').textContent = period === 'yearly' ? '/year' : '/month';
+      card.querySelector('.pricing-save').textContent = save;
+
+      var btn = card.querySelector('.pricing-btn');
+      if (btn && link) btn.setAttribute('href', link);
+      if (btn && label) btn.textContent = label;
+    });
+  }
+
+  buttons.forEach(function (b) {
+    b.addEventListener('click', function () { setPeriod(b.dataset.period); });
+  });
+
+  setPeriod('monthly');
+})();

@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "toro-tv-static",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["/Users/benjaminjbsmith/Projects/Toro-TV-Website-Dev/.claude/serve.py"],
+      "port": 8000
+    }
+  ]
+}
