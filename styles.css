@@ -107,6 +107,8 @@ h1, h2, h3 {
 .nav-links a:hover { color: var(--text); }
 .nav-cta { margin-left: 0.5rem; }
 .nav-cta .btn { padding: 0.6rem 1.4rem; font-size: 0.85rem; }
+.nav-links a.btn-primary,
+.nav-links a.btn-primary:hover { color: #fff; }
 
 .nav-toggle {
   display: none;
