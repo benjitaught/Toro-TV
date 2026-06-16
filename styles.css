@@ -565,8 +565,8 @@ h1, h2, h3 {
   color: var(--text-dim);
 }
 .footer-bottom a:hover { color: var(--red-light); }
-.footer-powered { display: flex; align-items: center; gap: 0.4rem; }
-.footer-powered img { height: 28px; width: auto; opacity: 0.8; }
+.footer-powered { display: flex; align-items: center; }
+.footer-powered img { height: 48px; width: auto; opacity: 0.85; }
 .social-icon { width: 30px; height: 30px; color: var(--text-dim); transition: color .15s ease, transform .15s ease; }
 .social-icon:hover { color: var(--red-light); transform: translateY(-2px); }
 
