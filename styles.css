@@ -199,11 +199,11 @@ h1, h2, h3 {
 
 /* ---------- Sections ---------- */
 .section {
-  max-width: var(--max-width);
-  margin: 0 auto;
-  padding: 4.25rem 1.5rem 3rem;
+  width: 100%;
+  padding: 4.25rem max(1.5rem, calc((100% - var(--max-width)) / 2)) 3rem;
   text-align: center;
   scroll-margin-top: 90px;
+  box-sizing: border-box;
 }
 .section:nth-of-type(even) { background: var(--bg-alt); }
 .section-tight { padding-top: 1.5rem; padding-bottom: 1.5rem; }
