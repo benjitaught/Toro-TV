@@ -1,7 +1,7 @@
-// Countdown timer to the giveaway end date
+// Countdown timer to the giveaway end date — always counts down to the
+// 30th of the current (or next) month at midnight, so it auto-resets
+// every month instead of ever running out.
 (function () {
-  var endDate = new Date('2026-07-31T00:00:00');
-
   var daysEl = document.getElementById('cd-days');
   var hoursEl = document.getElementById('cd-hours');
   var minsEl = document.getElementById('cd-mins');
@@ -13,13 +13,35 @@
     return String(n).padStart(2, '0');
   }
 
+  // Returns the 30th of the given month/year at midnight. Falls back to
+  // the last day of the month for months with fewer than 30 days (Feb).
+  function thirtiethOf(year, month) {
+    var d = new Date(year, month, 30, 0, 0, 0);
+    if (d.getMonth() !== ((month % 12) + 12) % 12) {
+      // Overflowed into the next month (short month) — use last day instead.
+      d = new Date(year, month + 1, 0, 0, 0, 0);
+    }
+    return d;
+  }
+
+  function getNextEndDate(now) {
+    var year = now.getFullYear();
+    var month = now.getMonth();
+    var candidate = thirtiethOf(year, month);
+    if (candidate <= now) {
+      var nextMonth = month + 1;
+      var nextYear = year;
+      if (nextMonth > 11) { nextMonth = 0; nextYear++; }
+      candidate = thirtiethOf(nextYear, nextMonth);
+    }
+    return candidate;
+  }
+
   function tick() {
     var now = new Date();
+    var endDate = getNextEndDate(now);
     var diff = endDate - now;
-    if (diff <= 0) {
-      daysEl.textContent = hoursEl.textContent = minsEl.textContent = secsEl.textContent = '00';
-      return;
-    }
+
     var days = Math.floor(diff / (1000 * 60 * 60 * 24));
     var hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
     var mins = Math.floor((diff / (1000 * 60)) % 60);
